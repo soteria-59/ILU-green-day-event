@@ -148,20 +148,17 @@ const Index = () => {
             <div>
               <label className="block text-sm font-semibold text-card-foreground mb-1.5">
                 <Users className="inline w-4 h-4 mr-1 -mt-0.5" />
-                Number of People <span className="text-destructive">*</span>
+                Number of People (including yourself) <span className="text-destructive">*</span>
               </label>
-              <select
+              <input
+                type="number"
                 name="people"
                 value={form.people}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-border bg-secondary/50 px-4 py-3 text-card-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
-              >
-                {[1, 2, 3, 4, 5].map((n) => (
-                  <option key={n} value={n}>
-                    {n}
-                  </option>
-                ))}
-              </select>
+                min={1}
+                placeholder="1"
+                className="w-full rounded-lg border border-border bg-secondary/50 px-4 py-3 text-card-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
+              />
             </div>
 
             {/* Comments */}
@@ -207,7 +204,7 @@ const Index = () => {
         )}
 
         <footer className="text-center mt-8 text-xs text-muted-foreground/60">
-          © 2026 ILU Kitengela. All rights reserved.
+          © 2026 Midwinter Nyambura, President, ILUSA. All rights reserved.
         </footer>
       </main>
     </div>
