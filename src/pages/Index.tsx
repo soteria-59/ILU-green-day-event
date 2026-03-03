@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import greenBg from "@/assets/green-bg.jpg";
-import { Leaf, MapPin, Calendar, Clock, Users, Send } from "lucide-react";
+import { Leaf, MapPin, Calendar, Clock, Users, Send, CheckCircle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const Index = () => {
   const [form, setForm] = useState({
@@ -11,7 +18,8 @@ const Index = () => {
     people: "1",
     comments: "",
   });
-  
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -19,14 +27,33 @@ const Index = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.contact || !form.attending) {
       toast.error("Please fill in all required fields.");
       return;
     }
-    toast.success("RSVP submitted successfully! We look forward to seeing you at ILU Green Day!");
-    setForm({ name: "", contact: "", attending: "", people: "1", comments: "" });
+    setSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append("name", form.name);
+      formData.append("contact", form.contact);
+      formData.append("attending", form.attending);
+      formData.append("people", form.people);
+      formData.append("comments", form.comments);
+
+      await fetch("https://script.google.com/macros/s/AKfycbxTrem6Pqoxyl-lhGpKkl1qJJQTHsFZm0IEmppv_WSn7XuvCO0X-vlCUmw3SJvpNnQA/exec", {
+        method: "POST",
+        body: formData,
+      });
+
+      setShowSuccess(true);
+      setForm({ name: "", contact: "", attending: "", people: "1", comments: "" });
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -182,10 +209,29 @@ const Index = () => {
               className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3.5 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
             >
               <Send className="w-5 h-5" />
-              Submit RSVP
+              {submitting ? "Submitting..." : "Submit RSVP"}
             </button>
           </form>
         )}
+
+        {/* Success Dialog */}
+        <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+          <DialogContent className="bg-card border-border text-card-foreground text-center max-w-md">
+            <DialogHeader className="items-center">
+              <CheckCircle className="w-16 h-16 text-primary mb-2" />
+              <DialogTitle className="text-2xl font-bold">RSVP Submitted!</DialogTitle>
+              <DialogDescription className="text-muted-foreground text-base mt-2">
+                Thank you! We look forward to seeing you at ILU Green Day on 6th March 2026.
+              </DialogDescription>
+            </DialogHeader>
+            <button
+              onClick={() => setShowSuccess(false)}
+              className="mt-4 w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition-all"
+            >
+              Back to Form
+            </button>
+          </DialogContent>
+        </Dialog>
 
         <footer className="text-center mt-8 text-xs text-muted-foreground/60">
           © 2026 Midwinter Nyambura, President, ILUSA. All rights reserved.
