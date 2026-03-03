@@ -228,7 +228,7 @@ const Index = () => {
         </Dialog>
 
         <footer className="text-center mt-8 text-xs text-muted-foreground/60">
-          © 2026 Midwinter Nyambura, President-ILUSA. All rights reserved.
+          © 2026 Midwinter Nyambura, President, ILUSA. All rights reserved.
         </footer>
       </main>
     </div>
