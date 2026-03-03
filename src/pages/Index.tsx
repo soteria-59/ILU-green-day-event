@@ -11,7 +11,7 @@ const Index = () => {
     people: "1",
     comments: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -25,8 +25,8 @@ const Index = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
-    setSubmitted(true);
-    toast.success("RSVP submitted successfully!");
+    toast.success("RSVP submitted successfully! We look forward to seeing you at ILU Green Day!");
+    setForm({ name: "", contact: "", attending: "", people: "1", comments: "" });
   };
 
   return (
@@ -74,7 +74,7 @@ const Index = () => {
         </header>
 
         {/* Form Card */}
-        {!submitted ? (
+        {(
           <form
             onSubmit={handleSubmit}
             className="bg-card/90 backdrop-blur-md rounded-2xl shadow-2xl border border-border/50 p-8 space-y-5"
@@ -102,15 +102,15 @@ const Index = () => {
             {/* Contact */}
             <div>
               <label className="block text-sm font-semibold text-card-foreground mb-1.5">
-                Phone or Email <span className="text-destructive">*</span>
+                Phone Number <span className="text-destructive">*</span>
               </label>
               <input
-                type="text"
+                type="tel"
                 name="contact"
                 value={form.contact}
                 onChange={handleChange}
                 required
-                placeholder="name@example.com or +254..."
+                placeholder="+254..."
                 className="w-full rounded-lg border border-border bg-secondary/50 px-4 py-3 text-card-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
               />
             </div>
@@ -185,22 +185,6 @@ const Index = () => {
               Submit RSVP
             </button>
           </form>
-        ) : (
-          <div className="bg-card/90 backdrop-blur-md rounded-2xl shadow-2xl border border-border/50 p-10 text-center">
-            <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Leaf className="w-8 h-8 text-primary" />
-            </div>
-            <h2 className="text-2xl font-bold text-card-foreground mb-2">Thank You!</h2>
-            <p className="text-muted-foreground">
-              Your RSVP has been received. We look forward to seeing you at ILU Green Day!
-            </p>
-            <button
-              onClick={() => { setSubmitted(false); setForm({ name: "", contact: "", attending: "", people: "1", comments: "" }); }}
-              className="mt-6 text-sm text-primary hover:underline font-medium"
-            >
-              Submit another response
-            </button>
-          </div>
         )}
 
         <footer className="text-center mt-8 text-xs text-muted-foreground/60">
