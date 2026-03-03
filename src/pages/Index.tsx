@@ -121,7 +121,7 @@ const Index = () => {
                 Will you be attending? <span className="text-destructive">*</span>
               </label>
               <div className="flex gap-3 mt-1">
-                {["Yes", "No", "Maybe"].map((opt) => (
+                {["Yes", "No"].map((opt) => (
                   <label
                     key={opt}
                     className={`flex-1 cursor-pointer text-center rounded-lg border-2 py-2.5 text-sm font-semibold transition-all ${
