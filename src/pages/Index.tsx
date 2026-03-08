@@ -20,8 +20,8 @@ const EventOverOverlay = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto">
       {/* Blurred green background */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(10px)", transform: "scale(1.1)" }}
+        className="absolute inset-0 bg-cover bg-center will-change-transform"
+        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(10px)", transform: "scale(1.1) translateZ(0)" }}
       />
       <div className="absolute inset-0 bg-background/75" />
 
