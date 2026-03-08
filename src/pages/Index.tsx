@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import greenBg from "@/assets/green-bg.jpg";
+import iluLogo from "@/assets/ilu-logo.png";
 import { Leaf, MapPin, Calendar, Clock, Users, Send, CheckCircle } from "lucide-react";
 import {
   Dialog,
@@ -72,6 +73,11 @@ const EventOverOverlay = () => {
         <p className="text-muted-foreground/50 text-[11px] italic">
           (Submissions are closed, but you can admire the design)
         </p>
+
+        <div className="flex items-center justify-center gap-2 pt-2 opacity-70">
+          <span className="text-muted-foreground text-[11px]">Powered by</span>
+          <img src={iluLogo} alt="International Leadership University" className="h-6 object-contain" />
+        </div>
       </div>
     </div>
   );
@@ -295,8 +301,14 @@ const Index = () => {
           </DialogContent>
         </Dialog>
 
-        <footer className="text-center mt-8 text-xs text-muted-foreground/60">
-          © 2026 Midwinter Nyambura, President, ILUSA. All rights reserved.
+        <footer className="text-center mt-8 space-y-2">
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-muted-foreground/60 text-xs">Powered by</span>
+            <img src={iluLogo} alt="International Leadership University" className="h-5 object-contain" />
+          </div>
+          <p className="text-muted-foreground/50 text-[10px]">
+            © 2026 Midwinter Nyambura, President, ILUSA.
+          </p>
         </footer>
       </main>
     </div>
