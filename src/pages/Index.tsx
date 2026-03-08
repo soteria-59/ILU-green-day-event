@@ -10,6 +10,65 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+const EventOverOverlay = () => {
+  const [dismissed, setDismissed] = useState(false);
+
+  if (dismissed) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-md p-4">
+      <div className="max-w-lg w-full bg-card rounded-3xl border border-border/50 shadow-2xl p-8 md:p-10 text-center space-y-5 animate-in fade-in zoom-in-95 duration-500">
+        {/* Big emoji moment */}
+        <div className="text-7xl md:text-8xl leading-none">🌿</div>
+
+        <h2
+          className="text-3xl md:text-4xl font-bold text-card-foreground"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          You Just Missed It! 😅
+        </h2>
+
+        <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+          <strong className="text-primary">ILU Green Day</strong> happened on{" "}
+          <strong>6th March 2026</strong> and it was <em>legendary</em>. 🌍🎉
+          <br />
+          Trees were planted. Speeches were made. The planet breathed a tiny sigh of relief.
+        </p>
+
+        <div className="bg-secondary/30 border border-border/40 rounded-xl p-4 text-sm text-card-foreground space-y-1.5">
+          <p className="font-semibold text-primary text-base">Interested in future events?</p>
+          <p className="text-muted-foreground">
+            Don't worry — we do this again. Reach out and we'll keep you in the loop! 🌱
+          </p>
+        </div>
+
+        <div className="pt-2 space-y-1">
+          <p className="text-card-foreground font-bold text-lg" style={{ fontFamily: "var(--font-display)" }}>
+            Midwinter Nyambura
+          </p>
+          <p className="text-muted-foreground text-sm font-medium">
+            President, ILUSA
+          </p>
+          <p className="text-primary text-sm">
+            📩 Slide into our DMs — or just say hi at campus!
+          </p>
+        </div>
+
+        <button
+          onClick={() => setDismissed(true)}
+          className="mt-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-8 rounded-xl text-sm transition-all active:scale-95"
+        >
+          Show me the form anyway 👀
+        </button>
+
+        <p className="text-muted-foreground/50 text-xs italic pt-1">
+          (Spoiler: submissions are closed, but you can admire the design)
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const Index = () => {
   const [form, setForm] = useState({
     name: "",
@@ -68,6 +127,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <EventOverOverlay />
       {/* Blurred background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
