@@ -12,19 +12,20 @@ import {
 } from "@/components/ui/dialog";
 
 const EventOverOverlay = () => {
-  const [dismissed, setDismissed] = useState(false);
-
-  if (dismissed) return null;
+  const [view, setView] = useState<"main" | "contact">("main");
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col overflow-auto">
-      {/* Navbar - white bg for logo visibility */}
+      {/* Navbar - solid white for logo clarity */}
       <div className="w-full shrink-0 bg-card border-b border-border/40 px-4 py-3 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-2.5">
-          <img src={iluLogo} alt="ILU Logo" className="w-9 h-9 object-contain" loading="eager" />
-          <span className="text-base font-bold text-card-foreground" style={{ fontFamily: "var(--font-display)" }}>ILU Green Day</span>
+        <div className="flex items-center gap-3">
+          <img src={iluLogo} alt="ILU Logo" className="w-12 h-12 md:w-14 md:h-14 object-contain" loading="eager" />
+          <div className="flex flex-col">
+            <span className="text-lg md:text-xl font-bold text-card-foreground leading-tight" style={{ fontFamily: "var(--font-display)" }}>ILU Green Day</span>
+            <span className="text-[10px] md:text-xs text-muted-foreground">Environmental Initiative</span>
+          </div>
         </div>
-        <span className="text-xs text-muted-foreground font-medium">🌿 March 2026</span>
+        <span className="text-xs text-muted-foreground font-medium hidden sm:block">🌿 6th March 2026</span>
       </div>
 
       {/* Main content area */}
@@ -36,62 +37,65 @@ const EventOverOverlay = () => {
         />
         <div className="absolute inset-0 bg-background/75" />
 
-        {/* Card */}
-        <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 backdrop-blur-sm rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-500">
-          <div className="text-5xl md:text-6xl leading-none">🌿</div>
+        {view === "main" ? (
+          /* Main "You missed it" card */
+          <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 backdrop-blur-sm rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-500">
+            <div className="text-5xl md:text-6xl leading-none">🌿</div>
 
-          <h2
-            className="text-2xl md:text-3xl font-bold text-card-foreground"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            You Just Missed It! 😅
-          </h2>
+            <h2
+              className="text-2xl md:text-3xl font-bold text-card-foreground"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              You Just Missed It! 😅
+            </h2>
 
-          <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-            <strong className="text-primary">ILU Green Day</strong> happened on{" "}
-            <strong>6th March 2026</strong> and it was <em>legendary</em>. 🌍🎉
-            <br />
-            Trees were planted. Speeches were made. The planet breathed a tiny sigh of relief.
-          </p>
-
-          <div className="bg-secondary/30 border border-border/40 rounded-xl p-3 text-sm text-card-foreground">
-            <p className="font-semibold text-primary">Interested in future events?</p>
-            <p className="text-muted-foreground text-xs mt-1">
-              Reach out and we'll keep you in the loop! 🌱
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              <strong className="text-primary">ILU Green Day</strong> happened on{" "}
+              <strong>6th March 2026</strong> and it was <em>legendary</em>. 🌍🎉
+              <br />
+              Trees were planted. Speeches were made. The planet breathed a tiny sigh of relief.
             </p>
-          </div>
 
-          <div className="space-y-0.5">
-            <p className="text-card-foreground font-bold text-base" style={{ fontFamily: "var(--font-display)" }}>
-              Midwinter Nyambura
-            </p>
-            <p className="text-muted-foreground text-xs font-medium">President, ILUSA</p>
-            <div className="flex items-center justify-center gap-3 mt-1">
-              <a href="https://wa.me/254713225339" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium">📱 WhatsApp</a>
-              <span className="text-border">|</span>
-              <a href="mailto:midwinter@ilusa.ac.ke" className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium">📩 Email</a>
+            <div className="bg-secondary/30 border border-border/40 rounded-xl p-3 text-sm text-card-foreground">
+              <p className="font-semibold text-primary">Interested in future events?</p>
+              <p className="text-muted-foreground text-xs mt-1">
+                Don't worry — there's always next time. Slide into our DMs! 🌱
+              </p>
+            </div>
+
+            {/* DM Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="https://wa.me/254713225339"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl text-base transition-all active:scale-[0.97] shadow-lg"
+              >
+                📱 WhatsApp Us
+              </a>
+              <a
+                href="mailto:midwinter@ilusa.ac.ke"
+                className="flex-1 flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold py-4 rounded-xl text-base transition-all active:scale-[0.97] shadow-lg"
+              >
+                📩 Send Email
+              </a>
+            </div>
+
+            <div className="space-y-0.5 pt-2">
+              <p className="text-card-foreground font-bold text-base" style={{ fontFamily: "var(--font-display)" }}>
+                Midwinter Nyambura
+              </p>
+              <p className="text-muted-foreground text-xs font-medium">President, ILUSA</p>
+            </div>
+
+            {/* Powered by ILU */}
+            <div className="flex items-center justify-center gap-2 pt-2 border-t border-border/30">
+              <span className="text-muted-foreground/60 text-[11px]">Powered by</span>
+              <img src={iluLogo} alt="ILU" className="w-6 h-6 object-contain" loading="eager" />
+              <span className="text-muted-foreground/60 text-[11px] font-semibold">ILU</span>
             </div>
           </div>
-
-          {/* Big obvious button */}
-          <button
-            onClick={() => setDismissed(true)}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl text-base transition-all active:scale-[0.97] shadow-lg"
-          >
-            Show me the form anyway 👀
-          </button>
-
-          <p className="text-muted-foreground/50 text-[11px] italic">
-            (Submissions are closed, but you can admire the design)
-          </p>
-
-          {/* Powered by ILU */}
-          <div className="flex items-center justify-center gap-2 pt-2 border-t border-border/30">
-            <span className="text-muted-foreground/60 text-[11px]">Powered by</span>
-            <img src={iluLogo} alt="ILU" className="w-5 h-5 object-contain" loading="eager" />
-            <span className="text-muted-foreground/60 text-[11px] font-semibold">ILU</span>
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
