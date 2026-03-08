@@ -9,8 +9,73 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import EventConcluded from "@/components/EventConcluded";
 
+const EventOverOverlay = () => {
+  const [dismissed, setDismissed] = useState(false);
+
+  if (dismissed) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto">
+      {/* Blurred green background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(10px)", transform: "scale(1.1)" }}
+      />
+      <div className="absolute inset-0 bg-background/75" />
+
+      {/* Card */}
+      <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 backdrop-blur-sm rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-500">
+        <div className="text-5xl md:text-6xl leading-none">🌿</div>
+
+        <h2
+          className="text-2xl md:text-3xl font-bold text-card-foreground"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          You Just Missed It! 😅
+        </h2>
+
+        <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+          <strong className="text-primary">ILU Green Day</strong> happened on{" "}
+          <strong>6th March 2026</strong> and it was <em>legendary</em>. 🌍🎉
+          <br />
+          Trees were planted. Speeches were made. The planet breathed a tiny sigh of relief.
+        </p>
+
+        <div className="bg-secondary/30 border border-border/40 rounded-xl p-3 text-sm text-card-foreground">
+          <p className="font-semibold text-primary">Interested in future events?</p>
+          <p className="text-muted-foreground text-xs mt-1">
+            Reach out and we'll keep you in the loop! 🌱
+          </p>
+        </div>
+
+        <div className="space-y-0.5">
+          <p className="text-card-foreground font-bold text-base" style={{ fontFamily: "var(--font-display)" }}>
+            Midwinter Nyambura
+          </p>
+          <p className="text-muted-foreground text-xs font-medium">President, ILUSA</p>
+          <div className="flex items-center justify-center gap-3 mt-1">
+            <a href="https://wa.me/254713225339" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium">📱 WhatsApp</a>
+            <span className="text-border">|</span>
+            <a href="mailto:midwinter@ilusa.ac.ke" className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium">📩 Email</a>
+          </div>
+        </div>
+
+        {/* Big obvious button */}
+        <button
+          onClick={() => setDismissed(true)}
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-xl text-base transition-all active:scale-[0.97] shadow-lg"
+        >
+          Show me the form anyway 👀
+        </button>
+
+        <p className="text-muted-foreground/50 text-[11px] italic">
+          (Submissions are closed, but you can admire the design)
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const Index = () => {
   const [form, setForm] = useState({
@@ -70,7 +135,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <EventConcluded />
+      <EventOverOverlay />
       {/* Blurred background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
