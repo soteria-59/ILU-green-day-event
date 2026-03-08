@@ -18,13 +18,13 @@ const EventOverOverlay = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col overflow-auto">
-      {/* Navbar space */}
-      <div className="w-full shrink-0 bg-background/80 backdrop-blur-sm border-b border-border/30 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <img src={iluLogo} alt="ILU Logo" className="w-8 h-8 object-contain" loading="eager" />
-          <span className="text-sm font-bold text-foreground" style={{ fontFamily: "var(--font-display)" }}>ILU Green Day</span>
+      {/* Navbar - white bg for logo visibility */}
+      <div className="w-full shrink-0 bg-card border-b border-border/40 px-4 py-3 flex items-center justify-between shadow-sm">
+        <div className="flex items-center gap-2.5">
+          <img src={iluLogo} alt="ILU Logo" className="w-9 h-9 object-contain" loading="eager" />
+          <span className="text-base font-bold text-card-foreground" style={{ fontFamily: "var(--font-display)" }}>ILU Green Day</span>
         </div>
-        <span className="text-xs text-muted-foreground">🌿 March 2026</span>
+        <span className="text-xs text-muted-foreground font-medium">🌿 March 2026</span>
       </div>
 
       {/* Main content area */}
