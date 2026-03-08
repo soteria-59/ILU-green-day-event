@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import greenBg from "@/assets/green-bg.jpg";
+import iluLogo from "@/assets/ilu-logo.png";
 import { Leaf, MapPin, Calendar, Clock, Users, Send, CheckCircle } from "lucide-react";
 import {
   Dialog,
