@@ -26,7 +26,7 @@ const EventOverOverlay = () => {
       <div className="absolute inset-0 bg-background/75" />
 
       {/* Card */}
-      <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 backdrop-blur-sm rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-500">
+      <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
         <div className="text-5xl md:text-6xl leading-none">🌿</div>
 
         <h2
