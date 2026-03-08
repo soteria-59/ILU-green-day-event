@@ -144,8 +144,8 @@ const Index = () => {
       <EventOverOverlay />
       {/* Blurred background */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(12px)", transform: "scale(1.1)" }}
+        className="absolute inset-0 bg-cover bg-center will-change-transform"
+        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(12px)", transform: "scale(1.1) translateZ(0)" }}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-background/70" />
