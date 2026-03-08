@@ -301,8 +301,14 @@ const Index = () => {
           </DialogContent>
         </Dialog>
 
-        <footer className="text-center mt-8 text-xs text-muted-foreground/60">
-          © 2026 Midwinter Nyambura, President, ILUSA. All rights reserved.
+        <footer className="text-center mt-8 space-y-2">
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-muted-foreground/60 text-xs">Powered by</span>
+            <img src={iluLogo} alt="International Leadership University" className="h-5 object-contain" />
+          </div>
+          <p className="text-muted-foreground/50 text-[10px]">
+            © 2026 Midwinter Nyambura, President, ILUSA.
+          </p>
         </footer>
       </main>
     </div>
