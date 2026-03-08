@@ -70,7 +70,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <EventOverOverlay />
+      <EventConcluded />
       {/* Blurred background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
