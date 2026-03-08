@@ -72,6 +72,11 @@ const EventOverOverlay = () => {
         <p className="text-muted-foreground/50 text-[11px] italic">
           (Submissions are closed, but you can admire the design)
         </p>
+
+        <div className="flex items-center justify-center gap-2 pt-2 opacity-70">
+          <span className="text-muted-foreground text-[11px]">Powered by</span>
+          <img src={iluLogo} alt="International Leadership University" className="h-6 object-contain" />
+        </div>
       </div>
     </div>
   );
