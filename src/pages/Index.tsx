@@ -54,7 +54,11 @@ const EventOverOverlay = () => {
             Midwinter Nyambura
           </p>
           <p className="text-muted-foreground text-xs font-medium">President, ILUSA</p>
-          <p className="text-primary text-xs">📩 Say hi at campus!</p>
+          <div className="flex items-center justify-center gap-3 mt-1">
+            <a href="https://wa.me/254713225339" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium">📱 WhatsApp</a>
+            <span className="text-border">|</span>
+            <a href="mailto:midwinter@ilusa.ac.ke" className="inline-flex items-center gap-1 text-primary hover:underline text-xs font-medium">📩 Email</a>
+          </div>
         </div>
 
         {/* Big obvious button */}
