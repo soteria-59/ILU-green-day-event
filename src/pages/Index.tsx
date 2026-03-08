@@ -20,13 +20,13 @@ const EventOverOverlay = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto">
       {/* Blurred green background */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(10px)", transform: "scale(1.1)" }}
+        className="absolute inset-0 bg-cover bg-center will-change-transform"
+        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(10px)", transform: "scale(1.1) translateZ(0)" }}
       />
       <div className="absolute inset-0 bg-background/75" />
 
       {/* Card */}
-      <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 backdrop-blur-sm rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-500">
+      <div className="relative z-10 max-w-md w-full mx-4 my-6 bg-card/95 rounded-2xl border border-border/50 shadow-2xl p-6 md:p-8 text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
         <div className="text-5xl md:text-6xl leading-none">🌿</div>
 
         <h2
@@ -144,8 +144,8 @@ const Index = () => {
       <EventOverOverlay />
       {/* Blurred background */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(12px)", transform: "scale(1.1)" }}
+        className="absolute inset-0 bg-cover bg-center will-change-transform"
+        style={{ backgroundImage: `url(${greenBg})`, filter: "blur(12px)", transform: "scale(1.1) translateZ(0)" }}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-background/70" />
